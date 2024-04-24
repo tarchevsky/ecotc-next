@@ -4,59 +4,16 @@ import { gql } from '@apollo/client'
 
 import { getApolloClient } from '@/lib/apollo-client'
 
-interface Params {
-	postSlug: string
-}
+import {
+	Params,
+	GetStaticPathsContext,
+	Translation,
+	PostEdge,
+	PostPageProps,
+	PathType
+} from '@/types'
 
-type GetStaticPathsContext = {
-	locales: string[]
-}
-
-type Translation = {
-	id: string
-	slug: string
-	content: string
-	title: string
-	language: {
-		locale: string
-		slug: string
-	}
-}
-
-type Post = {
-	slug: string
-	title: string
-	excerpt: string
-	path: string
-	translation: Translation
-	language: string
-}
-
-type Site = {
-	title: string
-}
-
-interface PostEdge {
-	node: {
-		id: string
-		title: string
-		slug: string
-	}
-}
-
-interface Props {
-	post: Post
-	site: Site
-	path: string
-}
-
-type PathType = {
-	params: {
-		postSlug: string
-	}
-}
-
-export default function Post({ post, site, path }: Props) {
+export default function Post({ post, site }: PostPageProps) {
 	return (
 		<div>
 			<Head>
@@ -94,7 +51,6 @@ export async function getStaticProps({
 	params: Params
 	locale: string
 }) {
-	const { postSlug } = params
 	const language = locale.toUpperCase()
 
 	const apolloClient = getApolloClient()

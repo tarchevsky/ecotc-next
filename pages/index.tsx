@@ -4,34 +4,7 @@ import { gql } from '@apollo/client'
 import { getApolloClient } from 'lib/apollo-client'
 import Link from 'next/link'
 
-type LanguageCodeFilterEnum = 'en' | 'ru'
-
-type HomePageProps = {
-	posts: Post[]
-	page: any
-	locale: LanguageCodeFilterEnum
-	node: any
-}
-
-type Translation = {
-	id: string
-	slug: string
-	content: string
-	title: string
-	language: {
-		locale: string
-		slug: string
-	}
-}
-
-type Post = {
-	slug: string
-	title: string
-	excerpt: string
-	path: string
-	translation: Translation
-	language: string
-}
+import { HomePageProps } from '@/types'
 
 const HomePage: NextPage<HomePageProps> = ({ page, posts }: HomePageProps) => {
 	const { caption, consultingDescr, heroImage } =

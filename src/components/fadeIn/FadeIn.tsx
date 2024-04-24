@@ -1,11 +1,7 @@
 import { motion, useAnimation } from 'framer-motion'
-import { ReactNode, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import cn from 'clsx'
-
-interface LayoutProps {
-	children: ReactNode
-	className?: string
-}
+import { LayoutProps } from '@/types'
 
 const FadeIn = ({ children, className = 'cont' }: LayoutProps) => {
 	const controls = useAnimation()
