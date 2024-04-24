@@ -1,0 +1,37 @@
+.active {
+    opacity: 1;
+    @apply bg-base-100;
+    transform: translateY(0);
+
+    .item {
+        opacity: 1;
+    }
+}
+
+.home {
+    color:yellow
+}
+
+.toggle {
+    color: yellow
+}
+
+.logo {
+    font-family: "Times New Roman";
+}
+
+.h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    line-height: normal;
+    color: #229624;
+}
+
+.h2 {
+    margin: 0;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 17px;
+    color: #575959;
+}
