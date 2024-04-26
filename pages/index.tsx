@@ -94,44 +94,6 @@ export async function getStaticProps({ locale }: HomePageProps) {
 					description
 				}
 				page(id: "cG9zdDoxMA==") {
-					homepagecontent {
-						adres
-						caption
-						consultingDescr
-						consultingSubtitle
-						consultingText
-						consultingTitle
-						email
-						kopirajt
-						nazvanieKompanii
-						ourActivity
-						ourActivityMetodology
-						ourActivityTitle
-						ourClientsTitle
-						razrabotchik
-						sferaDeyatelnostiDbv
-						slogan
-						telefon
-						whatWeDo
-						consultingPoints {
-							consultingPoint
-						}
-						heroImage {
-							node {
-								id
-								link
-							}
-						}
-						ourActivityPoints {
-							number
-							text
-							img {
-								node {
-									link
-								}
-							}
-						}
-					}
 					translation(language: $language) {
 						homepagecontent {
 							adres
