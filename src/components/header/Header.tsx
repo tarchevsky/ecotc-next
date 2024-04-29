@@ -62,42 +62,93 @@ const Header = () => {
 					tabIndex={0}
 					className='absolute md:static menu flex-nowrap md:menu-horizontal start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:translate-y-0 md:translate-x-0'
 				>
-					<li
-						className={cn(
-							styles.item,
-							'block text-center opacity-0 md:opacity-100'
-						)}
-					>
-						<Link className='px-[10px] btn btn-ghost font-normal' href='/about'>
-							О проекте
-						</Link>
-					</li>
-					<li
-						className={cn(
-							styles.item,
-							'block text-center opacity-0 md:opacity-100'
-						)}
-					>
-						<Link
-							className='px-[10px] btn btn-ghost font-normal'
-							href='/documentation'
+					{activeLocale === 'ru' ? (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
 						>
-							Документация
-						</Link>
-					</li>
-					<li
-						className={cn(
-							styles.item,
-							'block text-center opacity-0 md:opacity-100'
-						)}
-					>
-						<Link
-							className='px-[10px] btn btn-ghost font-normal'
-							href='/contacts'
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/about'
+							>
+								О проекте
+							</Link>
+						</li>
+					) : (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
 						>
-							Контакты
-						</Link>
-					</li>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/en/about'
+							>
+								About
+							</Link>
+						</li>
+					)}
+					{activeLocale === 'ru' ? (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/documentation'
+							>
+								Документация
+							</Link>
+						</li>
+					) : (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/en/documentation'
+							>
+								Documentation
+							</Link>
+						</li>
+					)}
+					{activeLocale === 'ru' ? (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/contacts'
+							>
+								Контакты
+							</Link>
+						</li>
+					) : (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/en/contacts'
+							>
+								Contacts
+							</Link>
+						</li>
+					)}
 					{availableLocales.map(locale => {
 						return (
 							<li

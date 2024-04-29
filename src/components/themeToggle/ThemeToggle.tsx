@@ -1,4 +1,8 @@
+import { useRouter } from 'next/router'
+
 const ThemeToggle = () => {
+	const { locale: activeLocale } = useRouter()
+
 	return (
 		<div className='dropdown'>
 			<a
@@ -6,7 +10,7 @@ const ThemeToggle = () => {
 				role='button'
 				className='btn flex-nowrap text-start btn-ghost font-normal px-[10px] py-2'
 			>
-				Цветовая схема
+				{activeLocale === 'ru' ? 'Цветовая схема' : 'Color scheme'}
 				<svg
 					width='12px'
 					height='12px'
