@@ -23,6 +23,16 @@ export function _createApolloClient() {
 			uri: process.env.WORDPRESS_GRAPHQL_ENDPOINT
 		}),
 		cache: new InMemoryCache()
+		// defaultOptions: { // временное ограничение кеширования
+		// 	watchQuery: {
+		// 		fetchPolicy: 'no-cache',
+		// 		errorPolicy: 'ignore'
+		// 	},
+		// 	query: {
+		// 		fetchPolicy: 'no-cache',
+		// 		errorPolicy: 'all'
+		// 	}
+		// }
 	})
 }
 
