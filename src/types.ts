@@ -1,5 +1,14 @@
 import { ReactNode } from 'react'
 
+// Meta.tsx
+
+export interface MetaProps {
+	seo: {
+		title?: string
+		metaDesc?: string
+	}
+}
+
 // Layout.tsx + FadeIn.tsx
 
 export interface LayoutProps {

@@ -5,7 +5,7 @@ import { getApolloClient } from 'lib/apollo-client'
 import Link from 'next/link'
 
 import { PageProps } from '@/types'
-import Head from 'next/head'
+import Meta from '@/components/meta/Meta'
 
 const HomePage: NextPage<PageProps> = ({ page, posts }: PageProps) => {
 	const { caption, consultingDescr, heroImage } =
@@ -14,10 +14,7 @@ const HomePage: NextPage<PageProps> = ({ page, posts }: PageProps) => {
 
 	return (
 		<>
-			<Head>
-				<title>{seo.title}</title>
-				<meta name='description' content={seo.metaDesc} />
-			</Head>
+			<Meta seo={seo} />
 			<main className='cont'>
 				<img src={heroImage.node.link} alt='' />
 				<div

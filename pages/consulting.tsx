@@ -3,16 +3,13 @@ import FadeIn from '@/components/fadeIn/FadeIn'
 import { PageProps } from '@/types'
 import { getApolloClient } from '@/lib/apollo-client'
 import { gql } from '@apollo/client'
-import Head from 'next/head'
+import Meta from '@/components/meta/Meta'
 
 const Consulting: NextPage<PageProps> = ({ page }: PageProps) => {
 	const { seo } = page
 	return (
 		<>
-			<Head>
-				<title>{seo.title}</title>
-				<meta name='description' content={seo.metaDesc} />
-			</Head>
+			<Meta seo={seo} />
 			<FadeIn>
 				<main>
 					<h1 className={`text-4xl font-bold`}>{page.title}</h1>
