@@ -4,14 +4,20 @@ import { gql } from '@apollo/client'
 import { getApolloClient } from 'lib/apollo-client'
 import Link from 'next/link'
 
-import { HomePageProps } from '@/types'
+import { PageProps } from '@/types'
+import Head from 'next/head'
 
-const HomePage: NextPage<HomePageProps> = ({ page, posts }: HomePageProps) => {
+const HomePage: NextPage<PageProps> = ({ page, posts }: PageProps) => {
 	const { caption, consultingDescr, heroImage } =
 		page.translation.homepagecontent
+	const { seo } = page.translation
 
 	return (
 		<>
+			<Head>
+				<title>{seo.title}</title>
+				<meta name='description' content={seo.metaDesc} />
+			</Head>
 			<main className='cont'>
 				<img src={heroImage.node.link} alt='' />
 				<div
@@ -61,15 +67,25 @@ const HomePage: NextPage<HomePageProps> = ({ page, posts }: HomePageProps) => {
 
 export default HomePage
 
-export async function getStaticProps({ locale }: HomePageProps) {
+const categoryIds = {
+	ru: 17,
+	en: 19
+	// добавьте другие локали и соответствующие categoryId
+}
+
+export async function getStaticProps({ locale }: PageProps) {
 	const apolloClient = getApolloClient()
 
 	const language = locale.toUpperCase()
+	const categoryId = categoryIds[locale] || 17
 
 	const data = await apolloClient.query({
 		query: gql`
-			query PostsContents($language: LanguageCodeFilterEnum!) {
-				posts(where: { language: $language }) {
+			query PostsContents(
+				$language: LanguageCodeFilterEnum!
+				$categoryId: Int!
+			) {
+				posts(where: { categoryId: $categoryId, language: $language }) {
 					edges {
 						node {
 							id
@@ -82,19 +98,20 @@ export async function getStaticProps({ locale }: HomePageProps) {
 			}
 		`,
 		variables: {
-			language
+			language,
+			categoryId
 		}
 	})
 
 	const content = await apolloClient.query({
 		query: gql`
 			query HomepageContent($language: LanguageCodeEnum!) {
-				generalSettings {
-					title
-					description
-				}
 				page(id: "cG9zdDoxMA==") {
 					translation(language: $language) {
+						seo {
+							metaDesc
+							title
+						}
 						homepagecontent {
 							adres
 							caption
@@ -142,15 +159,13 @@ export async function getStaticProps({ locale }: HomePageProps) {
 		}
 	})
 
-	const posts = data?.data.posts.edges.map(({ node }: HomePageProps) => ({
+	const posts = data?.data.posts.edges.map(({ node }: PageProps) => ({
 		...node,
 		path: `/posts/${node.slug}`
 	}))
 
 	const page = {
-		...content?.data.generalSettings,
-		...content?.data.page,
-		...content?.data.page.translation
+		...content?.data.page
 	}
 
 	return {
@@ -158,6 +173,7 @@ export async function getStaticProps({ locale }: HomePageProps) {
 			page,
 			language,
 			posts
-		}
+		},
+		revalidate: 10
 	}
 }

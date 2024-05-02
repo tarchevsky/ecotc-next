@@ -11,11 +11,12 @@ export interface LayoutProps {
 
 export type LanguageCodeFilterEnum = 'en' | 'ru'
 
-export interface HomePageProps {
+export interface PageProps {
 	posts: PostProps[]
 	page: any
 	locale: LanguageCodeFilterEnum
 	node: any
+	pageId: string
 }
 
 // [postSlug].tsx
@@ -78,4 +79,10 @@ export type PostProps = {
 
 export interface BurgerProps {
 	toggleMenu: () => void
+}
+
+// ThemeToggle.tsx
+
+export interface ThemeToggleProps {
+	className?: string
 }

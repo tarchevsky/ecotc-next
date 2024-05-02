@@ -69,11 +69,34 @@ const Header = () => {
 								'block text-center opacity-0 md:opacity-100'
 							)}
 						>
+							<Link className='px-[10px] btn btn-ghost font-normal' href='/'>
+								Главная
+							</Link>
+						</li>
+					) : (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link className='px-[10px] btn btn-ghost font-normal' href='/en'>
+								Home
+							</Link>
+						</li>
+					)}
+					{activeLocale === 'ru' ? (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
 							<Link
 								className='px-[10px] btn btn-ghost font-normal'
 								href='/about'
 							>
-								О проекте
+								О нас
 							</Link>
 						</li>
 					) : (
@@ -100,9 +123,9 @@ const Header = () => {
 						>
 							<Link
 								className='px-[10px] btn btn-ghost font-normal'
-								href='/documentation'
+								href='/technology'
 							>
-								Документация
+								Технологии и оборудование
 							</Link>
 						</li>
 					) : (
@@ -114,9 +137,38 @@ const Header = () => {
 						>
 							<Link
 								className='px-[10px] btn btn-ghost font-normal'
-								href='/en/documentation'
+								href='/en/technology'
 							>
-								Documentation
+								Technology and equipment
+							</Link>
+						</li>
+					)}
+					{activeLocale === 'ru' ? (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/consulting'
+							>
+								Консалтинг
+							</Link>
+						</li>
+					) : (
+						<li
+							className={cn(
+								styles.item,
+								'block text-center opacity-0 md:opacity-100'
+							)}
+						>
+							<Link
+								className='px-[10px] btn btn-ghost font-normal'
+								href='/en/consulting'
+							>
+								Consulting
 							</Link>
 						</li>
 					)}
@@ -168,7 +220,7 @@ const Header = () => {
 							</li>
 						)
 					})}
-					<ThemeToggle />
+					<ThemeToggle className='md:m-auto' />
 				</ul>
 			</nav>
 			<Burger toggleMenu={toggleMenu} />

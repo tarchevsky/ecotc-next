@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router'
+import cn from 'clsx'
+import { ThemeToggleProps } from '@/types'
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ className }: ThemeToggleProps) => {
 	const { locale: activeLocale } = useRouter()
 
 	return (
-		<div className='dropdown'>
+		<div className={cn(className, 'dropdown')}>
 			<a
 				tabIndex={0}
 				role='button'

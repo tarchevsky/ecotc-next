@@ -1,14 +1,12 @@
 import { NextPage } from 'next'
 import FadeIn from '@/components/fadeIn/FadeIn'
-
-import Head from 'next/head'
 import { PageProps } from '@/types'
 import { getApolloClient } from '@/lib/apollo-client'
 import { gql } from '@apollo/client'
+import Head from 'next/head'
 
-const AboutPage: NextPage<PageProps> = ({ page }: PageProps) => {
+const Technology: NextPage<PageProps> = ({ page }: PageProps) => {
 	const { seo } = page
-
 	return (
 		<>
 			<Head>
@@ -24,7 +22,8 @@ const AboutPage: NextPage<PageProps> = ({ page }: PageProps) => {
 	)
 }
 
-export default AboutPage
+export default Technology
+
 export async function getStaticProps({ locale }: PageProps) {
 	const apolloClient = getApolloClient()
 
@@ -33,7 +32,7 @@ export async function getStaticProps({ locale }: PageProps) {
 	const content = await apolloClient.query({
 		query: gql`
 			query HomepageContent($language: LanguageCodeEnum!) {
-				page(id: "cG9zdDoxNDU=") {
+				page(id: "cG9zdDoxNDg=") {
 					translation(language: $language) {
 						seo {
 							metaDesc

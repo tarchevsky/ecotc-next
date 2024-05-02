@@ -35,7 +35,7 @@ const FadeIn = ({ children, className = 'cont' }: LayoutProps) => {
 			ref={ref}
 			animate={controls}
 			initial='hidden'
-			transition={{ duration: 3 }} // Настройка продолжительности анимации
+			transition={{ duration: 2 }} // Настройка продолжительности анимации
 			variants={{
 				visible: { opacity: 1, y: 0 },
 				hidden: { opacity: 0, y: 20 } // Начальное положение элемента перед анимацией
